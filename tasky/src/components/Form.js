@@ -2,7 +2,16 @@ import React from "react";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import MenuItem from '@mui/material/MenuItem';
 
+const priority = [{
+  value: "High"
+},
+{
+  value: "Medium"
+},{
+  value: "Low"
+}]
 const AddTaskForm = (props) => {
     
     return (
@@ -45,6 +54,20 @@ const AddTaskForm = (props) => {
               onChange={(event) => props.change(event)}
             />
           </div>
+
+          <TextField
+          select
+          label="priority"
+          name="priority"
+          onChange={(event) => props.change(event)}
+        >
+          {priority.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.value}
+            </MenuItem>
+          ))}
+        </TextField>
+
           <div>
             <Button 
               type="submit"
